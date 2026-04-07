@@ -1,14 +1,17 @@
 ---
-- hosts: 192.168.2.5
+- hosts: 192.168.2.6
   become: true
   tasks:
 
     - name: install httpd
-      dnf:
+      package:
+        name:
+          - httpd
+          - telnet
+          - php
+        state: present
+    - name: enable httpd
+      service:
         name: httpd
-        state: present
-
-    - name: install support for php
-      dnf:
-        name: php
-        state: present
+        state: started
+        enabled: yes
