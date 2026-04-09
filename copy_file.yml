@@ -10,3 +10,22 @@
         owner: root
         group: root
         mode: 0644
+
+    - name: change permision
+      tags: perm_change
+      file:
+        path: /var/www/html/index.html
+        mode: 0777 
+
+    - name: change httpd file
+      tags: file_update
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^ServerAdmin'
+        line: ServerAdmin keenanmorris93@gmail.com
+
+
+    - name: manage services files
+      service:
+        name: httpd
+        state: restarted

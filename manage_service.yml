@@ -1,0 +1,8 @@
+- name: manage services files
+  hosts: all
+  become: true
+  tasks:
+    - name: manage httpd
+      service:
+        name: httpd
+        state: stopped

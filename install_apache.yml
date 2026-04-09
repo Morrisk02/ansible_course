@@ -9,7 +9,7 @@
           - httpd
           - telnet
           - php
-        state: absent
+        state: present
     - name: enable httpd
       tags: start_httpd
       service:
