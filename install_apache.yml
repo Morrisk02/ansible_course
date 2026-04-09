@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.2.6
+- hosts: all
   become: true
   tasks:
 
@@ -9,8 +9,9 @@
           - httpd
           - telnet
           - php
-        state: present
+        state: absent
     - name: enable httpd
+      tags: start_httpd
       service:
         name: httpd
         state: started
